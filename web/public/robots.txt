@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /messages
+Disallow: /notifications
+Disallow: /earnings
+Disallow: /settings
+Disallow: /saved
+Disallow: /upload
+Disallow: /onboarding
+Disallow: /auth/
+Disallow: /reset-password
+
+Sitemap: https://ojasss.com/sitemap.xml

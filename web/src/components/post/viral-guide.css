@@ -1,0 +1,37 @@
+.viral-guide-dialog { border-radius: 20px 20px 0 0; }
+.viral-guide-dialog > header { padding: 12px 16px 8px; gap: 8px; }
+.viral-guide-dialog > header h2 { font-size: 15px; line-height: 1.4; }
+.viral-guide-dialog > header p { font-size: 12px; line-height: 1.5; }
+.viral-guide-dialog > .overflow-y-auto { padding: 4px 16px 14px; }
+.viral-guide-dialog > footer { padding: 8px 16px max(8px,env(safe-area-inset-bottom)); }
+.viral-guide-dialog > footer button,
+.viral-guide-dialog > footer a { min-height: 44px; font-size: 12px; }
+.viral-guide-steps { display: grid; gap: 12px; }
+.viral-progress-card { border: 1px solid color-mix(in srgb,var(--color-line) 80%,#c46be3); border-radius: 12px; background: linear-gradient(115deg,#963cbe0d,#f56d5308),var(--color-surface); padding: 12px; }
+.viral-progress-percent { font-size: 11px; font-weight: 600; color: var(--color-fg-2); font-variant-numeric: tabular-nums; }
+.viral-progress-card [role="progressbar"] > div { background: linear-gradient(90deg,#ed8b43,#ec4899,#a855f7); }
+@media (min-width: 640px) { .viral-guide-dialog { border-radius: 18px; } }
+@media (prefers-reduced-motion: reduce) { .viral-progress-card [role="progressbar"] > div { transition: none; } }
+.one-chance-vote-clock{display:inline-flex;align-items:center;gap:3px;padding:2px 5px;border:1px solid #d995f659;border-radius:7px;background:#261a34eb;color:#f6d9ff;font-size:9px;font-weight:600;line-height:1.25;font-variant-numeric:tabular-nums;white-space:nowrap;}
+/* One Chance vote control: compact pill, slim 48 h timer bar, clear open / voted / locked states */
+.oc-vote{display:flex;flex-direction:column;align-items:center;gap:3px;width:56px;flex-shrink:0}
+.oc-vote.is-horizontal{flex-direction:row;width:auto;gap:6px}
+.oc-vote-btn{display:flex;flex-direction:column;align-items:center;gap:1px;min-width:44px;padding:0;border:0;background:none;color:#fff;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.oc-vote-btn:disabled{cursor:progress}
+.oc-vote-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;border:1px solid #c9a6ff66;background:linear-gradient(150deg,#6d3fd0,#3a1f74);box-shadow:0 4px 14px #5b2bb855,inset 0 1px 0 #ffffff30;transition:transform .12s ease,background .2s ease}
+.oc-vote-btn:active .oc-vote-icon{transform:scale(.88)}
+.oc-vote-btn:focus-visible .oc-vote-icon{outline:2px solid #d7b8ff;outline-offset:2px}
+.oc-vote.is-voted .oc-vote-icon{background:linear-gradient(150deg,#16a36a,#0b6b45);border-color:#7ef0bd88;box-shadow:0 4px 14px #10b98155,inset 0 1px 0 #ffffff30}
+.oc-vote.is-locked .oc-vote-icon{background:linear-gradient(150deg,#3b3446,#221d2a);border-color:#ffffff2a;box-shadow:none;color:#d8cfe6}
+.oc-vote-label{font-size:10px;font-weight:700;letter-spacing:.02em;line-height:13px;text-shadow:0 1px 2px #0009}
+.oc-vote-count{font-size:10px;font-weight:600;line-height:12px;font-variant-numeric:tabular-nums;padding:0 5px;border-radius:99px;background:#0000008c}
+.oc-vote-timer{position:relative;display:inline-flex;align-items:center;gap:2px;overflow:hidden;padding:1px 5px 3px;border-radius:6px;background:#140d1fd9;border:1px solid #ffffff1f;color:#efe3ff;font-size:8.5px;font-weight:600;line-height:11px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.oc-vote-timer i{position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,#f59e0b,#a855f7);transform-origin:left;transition:transform 1s linear}
+.oc-vote.is-locked .oc-vote-timer{color:#fca5a5}
+.oc-vote.is-locked .oc-vote-timer i{display:none}
+.oc-vote-views{display:flex;align-items:center;gap:2px;font-size:9px;color:#fffc;text-shadow:0 1px 2px #0009}
+.oc-vote-spin{width:18px;height:18px;border-radius:50%;border:2px solid #ffffff55;border-top-color:#fff;animation:oc-spin .7s linear infinite}
+@keyframes oc-spin{to{transform:rotate(1turn)}}
+@media(prefers-reduced-motion:reduce){.oc-vote-spin{animation-duration:2s}.oc-vote-timer i{transition:none}}
+.oc-vote-pay{display:inline-flex;align-items:center;gap:2px;height:16px;padding:0 7px;border:0;border-radius:99px;background:linear-gradient(90deg,#f59e0b,#ea580c);color:#1b0f00;font-size:9px;font-weight:800;line-height:16px;cursor:pointer;box-shadow:0 2px 8px #f59e0b55;touch-action:manipulation}
+.oc-vote-pay:active{transform:scale(.94)}

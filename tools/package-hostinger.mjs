@@ -1,0 +1,14 @@
+import { cpSync, mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { createHash, randomBytes } from 'node:crypto';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root=join(dirname(fileURLToPath(import.meta.url)),'..');
+const stage=join(root,'work','hostinger-stage');mkdirSync(stage,{recursive:true});
+cpSync(join(root,'web','dist'),stage,{recursive:true,filter:(p)=>!p.endsWith('.map')});
+cpSync(join(root,'hostinger','api'),join(stage,'api'),{recursive:true});
+cpSync(join(root,'hostinger','schema.sql'),join(stage,'api','schema.sql'));
+const tokenPath=join(root,'work','setup-token');
+const token=existsSync(tokenPath)?readFileSync(tokenPath,'utf8').trim():randomBytes(32).toString('hex');
+writeFileSync(tokenPath,token,{mode:0o600});
+writeFileSync(join(stage,'api','setup-token.php'),`<?php return '${createHash('sha256').update(token).digest('hex')}';\n`);
+console.log('Prepared website and PHP API in work/hostinger-stage. No database credentials included.');

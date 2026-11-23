@@ -1,0 +1,47 @@
+.discover-page { padding-top: 16px; }
+.discover-page .discover-empty { padding-block: 20px; gap: 8px; }
+.discover-page .discover-empty > div:first-child { width: 40px; height: 40px; border-radius: 12px; }
+.discover-page .discover-empty > div:first-child > div:last-child { width: 40px; height: 40px; border-radius: 12px; }
+.discover-page .discover-empty > div:first-child svg { width: 20px; height: 20px; }
+.discover-page .discover-empty h3 { font-size: 14px; }
+.discover-page .discover-empty p { font-size: 12px; }
+.discover-page section > h2 { margin-bottom: 8px; font-size: 14px; line-height: 20px; }
+.discover-page .discover-filters button { min-height: 44px; }
+/* Slim visible surfaces retain a full 44px touch area. */
+.discover-categories > button { position: relative; isolation: isolate; height: 44px; padding-inline: 11px; border: 0; border-radius: 0; background: transparent; color: var(--color-fg-2); font-size: 12px; gap: 5px; white-space: nowrap; }
+.discover-categories > button::before { content: ''; position: absolute; z-index: -1; inset: 6px 0; border: 1px solid var(--color-line); border-radius: 8px; background: var(--color-surface); transition: border-color 180ms, background 180ms; }
+.discover-categories > button[aria-pressed="true"] { color: var(--color-fg); }
+.discover-categories > button[aria-pressed="true"]::before { border-color: #c46be35c; background: linear-gradient(110deg,#9c39c92b,#f35b7a19); }
+.discover-categories > button svg { width: 13px; height: 13px; opacity: .8; }
+.discover-categories > button:hover::before { border-color: #c46be380; }
+.discover-page .discover-type-row { gap: 6px; }
+.discover-page .discover-type-row > :first-child { min-width: 0; flex-shrink: 1; padding: 0; border-radius: 0; background: transparent; }
+.discover-page .discover-type-row > :first-child button { height: 44px; padding-inline: 10px; border-radius: 8px; font-size: 12px; }
+.discover-page .discover-type-row [role="radio"] > span:first-child:not(:last-child) { inset-block: 6px; border-radius: 8px; box-shadow: none; background: linear-gradient(110deg,#9c39c92b,#f35b7a19); border: 1px solid #c46be35c; }
+.discover-page .discover-language { position: relative; isolation: isolate; border: 0; background: transparent; padding-inline: 10px; font-size: 12px; }
+.discover-language::before { content: ''; position: absolute; z-index: -1; inset: 6px 0; border: 1px solid var(--color-line); border-radius: 8px; background: var(--color-surface); pointer-events: none; }
+.discover-language > svg { width: 13px; height: 13px; }
+.discover-filters button:focus-visible { outline: 2px solid #b97de5; outline-offset: -2px; }
+@media (prefers-reduced-motion: reduce) { .discover-categories > button::before { transition: none; } }
+.discover-page section > .grid:not(:has(.discover-creator)) { gap: 8px; }
+.discover-page section > .grid:has(a.group),
+.discover-page section > .grid[aria-label="Loading posts"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.discover-page section > [class*="columns-2"] { columns: 3; gap: 8px; }
+.discover-page section > .grid > a.group,
+.discover-page section > [class*="columns-2"] > a.group { border-radius: 10px; }
+.discover-page section > [class*="columns-2"] > a.group { margin-bottom: 8px; }
+.discover-page section > .grid > a.group > .absolute.top-2,
+.discover-page section > [class*="columns-2"] > a.group > .absolute.top-2 { left: 5px; top: 5px; flex-wrap: wrap; gap: 3px; }
+.discover-page section a.group .glass-dark { height: 20px; padding-inline: 5px; font-size: 10px; }
+.discover-page section a.group > .absolute.bottom-2 { gap: 7px; font-size: 10px; left: 6px; right: 6px; }
+@media (min-width: 640px) {
+  .discover-page { padding-top: 20px; }
+  .discover-page section > .grid:has(a.group),
+  .discover-page section > .grid[aria-label="Loading posts"] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .discover-page section > [class*="columns-2"] { columns: 4; }
+}
+@media (min-width: 1024px) {
+  .discover-page section > .grid:has(a.group),
+  .discover-page section > .grid[aria-label="Loading posts"] { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .discover-page section > [class*="columns-2"] { columns: 5; }
+}

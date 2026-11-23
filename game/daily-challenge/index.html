@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<title>OJASSS Daily Challenge - Island Survival</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ===== App shell nav (matches the OJASSS app mockup) ===== -->
+  <nav id="sidenav">
+    <div class="brand">OJ</div>
+    <button class="navbtn" data-nav="home"><span>⌂</span>Home</button>
+    <button class="navbtn" data-nav="videos"><span>▶</span>Videos</button>
+    <button class="navbtn active" data-nav="game"><span>🎮</span>Game</button>
+    <button class="navbtn" data-nav="profile"><span>☺</span>Profile</button>
+    <button class="navbtn" data-nav="more"><span>•••</span>More</button>
+  </nav>
+
+  <main id="stage">
+
+    <!-- ===== 1. LOBBY ===== -->
+    <section id="screen-lobby" class="screen active">
+      <div class="lobby-card">
+        <div class="lobby-hero">
+          <div class="hero-bg"></div>
+          <div class="hero-text">
+            <div class="hero-kicker">OJASSS <b>DAILY CHALLENGE</b></div>
+            <h1>ISLAND SURVIVAL</h1>
+            <div class="hero-tag">ఆడండి.. గెలవండి.. Coins సంపాదించండి!</div>
+          </div>
+        </div>
+
+        <div class="lobby-stats">
+          <div class="stat"><div class="stat-v" id="stat-play">20 mins</div><div class="stat-k">Game Play</div></div>
+          <div class="stat"><div class="stat-v" id="stat-break">10 mins</div><div class="stat-k">Break</div></div>
+          <div class="stat"><div class="stat-v">24/7</div><div class="stat-k">Automatic</div></div>
+        </div>
+
+        <div class="lobby-status">
+          <div id="lobby-phase" class="lobby-phase">Loading schedule…</div>
+          <div id="lobby-countdown" class="lobby-countdown">--:--</div>
+          <div id="lobby-sub" class="lobby-sub"></div>
+          <div class="lobby-bar"><i id="lobby-bar-fill"></i></div>
+        </div>
+
+        <div class="lobby-roster">
+          <span>Players</span>
+          <b id="lobby-count">0/20</b>
+          <div class="roster-dots" id="roster-dots"></div>
+        </div>
+
+        <button id="btn-join" class="btn-join">JOIN GAME</button>
+        <div class="lobby-note" id="lobby-note">The server runs 24/7 — no admin needs to start a round.</div>
+      </div>
+    </section>
+
+    <!-- ===== 2. SHIP ===== -->
+    <section id="screen-ship" class="screen">
+      <canvas id="ship-canvas"></canvas>
+      <div class="ship-top">
+        <div class="pill"><b id="ship-count">18/20</b><small>Players</small></div>
+        <div class="pill center" id="ship-timer">Match starting in 00:15</div>
+      </div>
+      <div class="ship-caption">Ship ద్వారా Island కి రావడం — the ship drops every registered player on the island.</div>
+    </section>
+
+    <!-- ===== 3. MATCH ===== -->
+    <section id="screen-play" class="screen">
+      <canvas id="game-canvas"></canvas>
+
+      <div class="hud">
+        <div class="hud-top">
+          <div class="pill"><b id="hud-players">20/20</b><small>Players</small></div>
+          <div class="pill center timer"><small>Game Time</small><b id="hud-time">20:00</b></div>
+          <div class="minimap-wrap">
+            <canvas id="minimap"></canvas>
+            <div class="minimap-label" id="minimap-label">Next ping 2:00</div>
+          </div>
+        </div>
+
+        <div id="hud-banner" class="hud-banner"></div>
+
+        <div class="hud-feed" id="hud-feed"></div>
+
+        <div class="hud-bottom">
+          <div id="stick" class="stick"><i id="stick-nub"></i></div>
+          <div class="hud-right">
+            <div class="ammo"><b id="hud-ammo">30</b>/<span id="hud-reserve">120</span></div>
+            <button id="btn-reload" class="rbtn" title="Reload (R)">⟳</button>
+            <button id="btn-fire" class="fbtn" title="Fire (click / Space)">🔫</button>
+          </div>
+        </div>
+
+        <div class="hud-coin" id="hud-coin"><span>Coins</span><b id="hud-coins">50</b></div>
+        <div class="hud-rank" id="hud-rank">Rank 1 / 20</div>
+      </div>
+    </section>
+
+    <!-- ===== 4. RESULTS ===== -->
+    <section id="screen-results" class="screen">
+      <div class="results-card">
+        <h2>Game Completed!</h2>
+        <div class="podium" id="podium"></div>
+        <div class="your-result" id="your-result"></div>
+        <div class="cycle-strip">
+          <div class="cyc"><b>20</b><span>Minutes Game Play</span></div>
+          <div class="arrow">→</div>
+          <div class="cyc"><b>10</b><span>Minutes Break</span></div>
+          <div class="arrow">→</div>
+          <div class="cyc"><b>Auto</b><span>Next Game Start</span></div>
+          <div class="arrow">→</div>
+          <div class="cyc"><b>24/7</b><span>Runs Automatically</span></div>
+        </div>
+        <div class="next-game">Next game starts in <b id="results-next">10:00</b></div>
+        <button id="btn-back-lobby" class="btn-join small">BACK TO LOBBY</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Test / dev panel ===== -->
+  <aside id="devpanel">
+    <header>
+      <b>Test controls</b>
+      <button id="dev-toggle">—</button>
+    </header>
+    <div class="dev-body">
+      <label>Clock speed
+        <select id="dev-speed"></select>
+      </label>
+      <div class="dev-row">
+        <button data-skip="match">⏭ Start match</button>
+        <button data-skip="highlight">📍 Next ping</button>
+      </div>
+      <div class="dev-row">
+        <button data-skip="storm">⛈ Jump to storm</button>
+        <button data-skip="end">🏁 Jump to end</button>
+      </div>
+      <div class="dev-row">
+        <button id="dev-pause">⏸ Pause clock</button>
+        <button id="dev-next">🔁 Force next game</button>
+      </div>
+      <div class="dev-read" id="dev-read"></div>
+      <div class="dev-help">
+        WASD / arrows move · mouse aims · click or Space fires · R reloads · Shift sprints
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/schedule.js"></script>
+<script src="js/island.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/bots.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/render.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

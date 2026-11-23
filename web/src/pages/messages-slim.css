@@ -1,0 +1,13 @@
+/* Slim, neat Messages: tighter rows, hairline separators, compact bubbles */
+.msg-title{letter-spacing:-.01em}
+.msg-row{position:relative}
+.msg-row::after{content:"";position:absolute;left:62px;right:10px;bottom:0;height:1px;background:var(--color-line);opacity:.55}
+li:last-child>.msg-row::after{display:none}
+.msg-row[aria-current=page]{box-shadow:inset 3px 0 0 var(--color-brand,#c026d3)}
+.msg-head{backdrop-filter:blur(10px)}
+.msg-thread ol>li+li{margin-top:2px}
+.msg-thread .chat-message-bubble{box-shadow:0 1px 1px #0000000d}
+.msg-day{display:flex;align-items:center;gap:10px}
+.msg-day::before,.msg-day::after{content:"";flex:1;height:1px;background:var(--color-line);opacity:.6}
+.msg-composer textarea{line-height:1.35}
+.msg-composer button{min-width:40px;min-height:40px}

@@ -1,0 +1,57 @@
+/* Admin Business: slim professional rows */
+.ab{display:flex;flex-direction:column;gap:12px;max-width:760px}
+.ab-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ab-title{display:flex;align-items:center;gap:9px;min-width:0}
+.ab-logo{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:9px;color:#fff;background:linear-gradient(135deg,#7c3aed,#db2777)}
+.ab-title h1{margin:0;font-size:15px;font-weight:700;line-height:1.2}
+.ab-title p{margin:0;font-size:11.5px;opacity:.55}
+.ab-switch{position:relative;flex:none;display:inline-flex;align-items:center;gap:7px;padding:5px 10px 5px 5px;border-radius:999px;border:1px solid rgba(255,255,255,.12);font-size:12px;font-weight:600;cursor:pointer}
+.ab-switch input{position:absolute;opacity:0;pointer-events:none}
+.ab-switch i{position:relative;width:30px;height:17px;border-radius:999px;background:rgba(255,255,255,.18);transition:background .2s}
+.ab-switch i::after{content:"";position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:#fff;transition:transform .2s}
+.ab-switch.is-on{border-color:rgba(52,211,153,.4);color:#6ee7b7}
+.ab-switch.is-on i{background:#10b981}.ab-switch.is-on i::after{transform:translateX(13px)}
+.ab-card{padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025)}
+.ab-head{display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.ab-head h2{margin:0;font-size:13px;font-weight:700}
+.ab-head>span{font-size:11px;padding:0 7px;border-radius:999px;background:rgba(255,255,255,.08);opacity:.8}
+.ab-add{margin-left:auto}
+.ab-empty{margin:2px 0;font-size:12px;opacity:.55}
+.ab-list{display:flex;flex-direction:column}
+.ab-row{display:flex;align-items:center;gap:9px;padding:8px 0;border-top:1px solid rgba(255,255,255,.06)}
+.ab-row:first-child{border-top:0}
+.ab-av{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;font-size:12px;font-weight:700;background:rgba(192,132,252,.18);color:#e9d5ff}
+.ab-main{flex:1;min-width:0;display:flex;flex-direction:column}
+.ab-main b{font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ab-main span{font-size:11px;opacity:.55;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ab-pill{flex:none;font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;text-transform:capitalize}
+.ab-pill.is-approved{background:rgba(16,185,129,.15);color:#6ee7b7}
+.ab-pill.is-rejected{background:rgba(239,68,68,.15);color:#fca5a5}
+.ab-pill.is-pending{background:rgba(245,158,11,.15);color:#fcd34d}
+.ab-btn{flex:none;display:inline-flex;align-items:center;gap:4px;height:28px;padding:0 10px;border-radius:8px;font-size:12px;font-weight:600;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+.ab-btn.ok{border-color:transparent;color:#fff;background:linear-gradient(90deg,#7c3aed,#c026d3)}
+.ab-btn:disabled{opacity:.4}
+.ab-icon{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:8px;border:1px solid rgba(255,255,255,.1);opacity:.8}
+.ab-icon:hover{opacity:1;background:rgba(255,255,255,.06)}
+.ab-thumb{flex:none;width:34px;height:34px;border-radius:8px;object-fit:contain;background:#fff}
+span.ab-thumb{background:rgba(255,255,255,.08)}
+.ab-form{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;padding:10px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
+@media (max-width:520px){.ab-form{grid-template-columns:1fr}}
+.ab-f{display:flex;flex-direction:column;gap:3px;font-size:11px;opacity:.9}
+.ab-in{height:32px;padding:0 9px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.2);color:inherit;font-size:12.5px;outline:0}
+.ab-in:focus{border-color:#a855f7}
+.ab-err{grid-column:1/-1;margin:0;font-size:12px;color:#fca5a5}
+.ab-actions{grid-column:1/-1;display:flex;gap:6px}
+.nav-new-tag{margin-left:6px;padding:1px 6px;border-radius:999px;font-size:9px;font-weight:800;letter-spacing:.08em;line-height:14px;color:#fff;background:linear-gradient(90deg,#f43f5e,#a855f7,#3b82f6,#10b981,#f59e0b,#f43f5e);background-size:250% 100%;animation:nav-new 4s linear infinite;box-shadow:0 0 8px -2px #a855f7}
+@keyframes nav-new{to{background-position:250% 0}}
+@media (prefers-reduced-motion:reduce){.nav-new-tag{animation:none}}
+/* NEW nav items: single line + neon slim curved outline */
+a:has(>.nav-new-tag){white-space:nowrap;font-size:13.5px}
+a[href="/admin/business"]{border:1px solid rgba(192,132,252,.55);border-radius:14px;box-shadow:0 0 10px -3px rgba(192,132,252,.8),inset 0 0 8px -4px rgba(56,189,248,.7);animation:nav-neon 3s ease-in-out infinite}
+a:has(>.nav-new-tag) .nav-new-tag{margin-left:auto;flex:none}
+@keyframes nav-neon{50%{border-color:rgba(56,189,248,.6);box-shadow:0 0 12px -3px rgba(56,189,248,.8),inset 0 0 8px -4px rgba(244,63,94,.6)}}
+@media (prefers-reduced-motion:reduce){a[href="/admin/business"]{animation:none}}
+.ab-row{flex-wrap:wrap}
+.ab-inline{flex-basis:100%;margin:6px 0 0}
+.ab-danger{color:#fca5a5;border-color:rgba(239,68,68,.3)}
+.ab-danger:hover{background:rgba(239,68,68,.12)}

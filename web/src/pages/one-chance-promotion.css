@@ -1,0 +1,14 @@
+.one-chance-promotion { max-width: 680px; padding-top: 16px; }
+.one-chance-promotion > .rounded-2xl,
+.one-chance-promotion > div > .rounded-2xl { border-radius: 14px; padding: 12px; margin-bottom: 12px; }
+.one-chance-promotion section > div:first-child p { font-size: 12px; line-height: 1.6; }
+.one-chance-promotion section > div:first-child h2 { font-size: 14px; }
+.one-chance-promotion section > .grid { gap: 8px; }
+.one-chance-promotion .promotion-package { min-height: 0; }
+.one-chance-promotion .promotion-package p { line-height: 1.6; }
+.one-chance-promotion button:not(.promotion-package),
+.one-chance-promotion input { min-height: 44px; font-size: 13px; }
+.one-chance-promotion input[type="text"] { font-size: 16px; }
+.one-chance-promotion label { font-size: 12px; }
+.one-chance-promotion > .space-y-4 { gap: 12px; }
+.one-chance-promotion :focus-visible { outline-offset: 3px; }

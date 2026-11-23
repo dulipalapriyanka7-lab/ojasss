@@ -1,0 +1,5 @@
+OJASSS uses Mediabunny 1.65.0, Copyright (c) 2026-present Vanilagy and contributors.
+Mediabunny is distributed under the Mozilla Public License 2.0.
+License: /licenses/mediabunny-MPL-2.0.txt
+Unmodified library source: https://github.com/Vanilagy/mediabunny
+Versioned package: https://www.npmjs.com/package/mediabunny/v/1.65.0

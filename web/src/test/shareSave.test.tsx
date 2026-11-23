@@ -1,0 +1,17 @@
+import {afterEach,beforeEach,it,expect,vi} from 'vitest';
+import {cleanup,fireEvent,render,screen} from '@testing-library/react';
+import {QueryClient,QueryClientProvider} from '@tanstack/react-query';
+import {MemoryRouter} from 'react-router-dom';
+import {platform} from '@/lib/platform';
+import {publicSiteUrl} from '@/lib/siteUrl';
+import {EngagementRail,type EngagementHandlers} from '@/components/post/EngagementRail';
+import type {PostCard} from '@/api';
+vi.mock('@/hooks/useAuth',()=>({useAuth:()=>({me:null})}));
+vi.mock('@/hooks/usePostActions',()=>({usePublicSettings:()=>({data:{}}),useCommentsEnabled:()=>false,patchPost:vi.fn()}));
+vi.mock('@/components/ui/Toast',()=>({useToast:()=>({success:vi.fn(),error:vi.fn()})}));
+beforeEach(()=>{vi.stubGlobal('matchMedia',vi.fn(()=>({matches:false,addEventListener:vi.fn(),removeEventListener:vi.fn(),addListener:vi.fn(),removeListener:vi.fn()})));});
+afterEach(()=>{cleanup();vi.unstubAllGlobals();});
+it('uses the live site origin instead of a development address in production links',()=>{expect(publicSiteUrl('http://localhost:5173','https://new.ojasss.com',true)).toBe('https://new.ojasss.com');expect(publicSiteUrl('http://localhost:5173','http://localhost:3000',false)).toBe('http://localhost:5173');});
+it('copies a link when Web Share is unavailable or fails',async()=>{const writeText=vi.fn(async()=>{});vi.stubGlobal('navigator',{share:vi.fn(async()=>{throw new DOMException('Unsupported','NotSupportedError');}),clipboard:{writeText}});expect(await platform.share({title:'Video',url:'https://new.ojasss.com/post/test'})).toBe('copied');expect(writeText).toHaveBeenCalledExactlyOnceWith('https://new.ojasss.com/post/test');});
+it('respects cancellation without copying a link',async()=>{const writeText=vi.fn();vi.stubGlobal('navigator',{share:vi.fn(async()=>{throw new DOMException('Cancelled','AbortError');}),clipboard:{writeText}});expect(await platform.share({title:'Video',url:'https://new.ojasss.com/post/test'})).toBe('cancelled');expect(writeText).not.toHaveBeenCalled();});
+it('shows the save count before and after saving, including zero',()=>{const handlers=Object.fromEntries(['onHot','onSpeak','onViral','onComments','onBookmark','onShare','onMore'].map(key=>[key,vi.fn()])) as unknown as EngagementHandlers;const post={id:'test',author_id:'creator',bookmarks_count:0,my_bookmarked:false,hot_count:0,comments_count:0,shares_count:0,category:'entertainment'} as PostCard;const client=new QueryClient();const ui=(data:PostCard)=><QueryClientProvider client={client}><MemoryRouter><EngagementRail post={data} handlers={handlers}/></MemoryRouter></QueryClientProvider>;const result=render(ui(post));fireEvent.click(screen.getByRole('button',{name:'Save, 0'}));expect(handlers.onBookmark).toHaveBeenCalledOnce();result.rerender(ui({...post,my_bookmarked:true,bookmarks_count:1}));expect(screen.getByRole('button',{name:'Saved, 1'})).toHaveAttribute('aria-pressed','true');});

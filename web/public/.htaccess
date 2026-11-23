@@ -1,0 +1,42 @@
+# OJASSS on Apache / Hostinger (mirrors vercel.json). Copied into dist/ by `npm run build`.
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # HTTPS + apex domain
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^ https://ojasss.com%{REQUEST_URI} [L,R=301]
+  # Server-rendered metadata lets social crawlers see account logos and reel covers.
+  RewriteRule ^(?:post/[a-fA-F0-9-]{36}/?|register/?|login/?)$ api/share-page.php [END]
+  RewriteRule ^play-game/ api/monster-asset.php [END]
+  # Real files (assets, icons, .well-known) are served as-is; every app route falls back to the SPA.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY" "expr=%{THE_REQUEST} !~ m#\s/+play-game/#"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin" "expr=%{THE_REQUEST} !~ m#\s/+play-game/#"
+  Header always set Permissions-Policy "camera=(self), microphone=(self), geolocation=(self), payment=(), usb=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://apis.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.supabase.co https://lh3.googleusercontent.com; media-src 'self' blob: https://*.supabase.co; font-src 'self' data:; connect-src 'self' https://maps.googleapis.com https://*.supabase.co wss://*.supabase.co https://firebaseinstallations.googleapis.com https://fcmregistrations.googleapis.com https://fcm.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://apis.google.com https://ojasss-343d1.firebaseapp.com; frame-src 'self' https://www.google.com https://ojasss-343d1.firebaseapp.com https://accounts.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests" "expr=%{THE_REQUEST} !~ m#\s/+play-game/#"
+
+  # Hashed build output never changes; everything else revalidates.
+  <If "%{REQUEST_URI} =~ m#^/assets/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+  <FilesMatch "^(index\.html|sw\.js|config\.js)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+  AddType application/json .json
+</IfModule>

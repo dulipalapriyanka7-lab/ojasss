@@ -1,0 +1,86 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-feature android:name="android.hardware.screen.landscape" android:required="false" />
+    <uses-feature android:name="android.hardware.screen.portrait" android:required="false" />
+    <application
+        android:label="OJASSS"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:allowBackup="false"
+        android:usesCleartextTraffic="false">
+        <activity android:name=".MonsterGameActivity" android:exported="false" android:screenOrientation="sensorLandscape" android:enableOnBackInvokedCallback="false" android:theme="@android:style/Theme.Material.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme" />
+            <!-- app_links handles deep links itself. -->
+            <meta-data android:name="flutter_deeplinking_enabled" android:value="false" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- App Links: same paths as the Kotlin shell. -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" />
+                <data android:host="ojasss.com" />
+                <data android:host="www.ojasss.com" />
+                <data android:pathPrefix="/post/" />
+                <data android:pathPrefix="/profile/" />
+                <data android:pathPrefix="/auth/callback" />
+                <data android:pathPrefix="/reset-password" />
+                <data android:pathPrefix="/explore" />
+                <data android:pathPrefix="/messages" />
+            </intent-filter>
+        </activity>
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+    </application>
+
+    <!-- Apps we may hand links to (CTA buttons, WhatsApp, calls, UPI, Custom Tabs). -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="tel" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="mailto" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="whatsapp" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="upi" />
+        </intent>
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT" />
+            <data android:mimeType="text/plain" />
+        </intent>
+    </queries>
+</manifest>

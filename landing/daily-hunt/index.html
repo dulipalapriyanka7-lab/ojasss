@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0a090e"><title>Daily Hunt by OJASSS — A new arena is coming</title><meta name="description" content="Your next chapter starts in the arena. Meet Daily Hunt, the upcoming OJASSS battle experience. Discover the OJASSS creator community while we build."><link rel="canonical" href="https://new.ojasss.com/"><meta property="og:title" content="Daily Hunt by OJASSS — Coming Soon"><meta property="og:description" content="A new arena. A new story. The next chapter of OJASSS is on its way."><meta property="og:image" content="https://new.ojasss.com/hunt-assets/arena.webp"><meta property="og:type" content="website"><meta property="og:url" content="https://new.ojasss.com/"><link rel="icon" href="/hunt-assets/logo.png"><link rel="stylesheet" href="/hunt-assets/hunt.css?v=glassy4"><script src="/hunt-assets/hunt.js" defer></script><script src="/hunt-assets/motion.js?v=2" defer></script></head>
+<body><a href="#main" class="skip">Skip to content</a><header class="nav wrap"><a class="brand" href="/" aria-label="OJASSS Daily Hunt home"><span class="logo"><img src="/hunt-assets/logo.png" alt="OJASSS" width="44" height="44"></span><span>OJASSS<small>PLAY YOUR NEXT CHAPTER</small></span></a><nav aria-label="Main navigation"><a href="#experience">The experience</a><a href="#universe">Our universe</a><a href="#updates">Launch updates</a></nav><a class="button small ghost" href="https://ojasss.com/">Open OJASSS <span aria-hidden="true">↗</span></a></header>
+<main id="main"><style>
+.portal-hero{position:relative;isolation:isolate;display:grid;align-items:center;min-height:100svh;overflow:hidden;background:#050505;color:#fafafa;font-family:Manrope,system-ui,sans-serif}
+.portal-plate{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-2}
+.portal-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#050505 0%,#050505e8 22%,#05050540 56%,transparent 78%)}
+.portal-mark{position:absolute;left:50%;top:57%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3em;width:min(15vw,18svh);height:35%;color:#17151e;font-size:clamp(13px,2.6vw,38px);font-weight:800;letter-spacing:.07em;white-space:nowrap;pointer-events:none}.portal-mark img{width:83%;height:auto;aspect-ratio:1;object-fit:contain;border-radius:22%;mix-blend-mode:multiply}.portal-mark span{line-height:1}
+.portal-copy{padding:clamp(24px,5vw,76px);max-width:48rem}
+.portal-copy h1{font-size:clamp(3.5rem,7vw,8rem);line-height:.91;letter-spacing:-.075em;margin:.2em 0}
+.portal-copy>p{color:#ccc;max-width:30ch}
+.portal-copy .button{background:white;color:#050505;border:0;box-shadow:none;margin-top:1rem}
+.portal-hero .portal-control{position:absolute;right:1rem;bottom:1rem;border:1px solid #888;background:#050505cc;color:#fff;border-radius:999px;padding:.55rem .9rem}
+@media(max-aspect-ratio:11/10){.portal-hero{align-items:end;min-height:90svh}.portal-mark{width:min(22vw,16svh);font-size:clamp(12px,3.5vw,24px)}.portal-hero::before{background:linear-gradient(0deg,#050505 5%,#050505db 27%,transparent 70%)}.portal-copy{padding-bottom:4rem}}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap">
+<section class="portal-hero" aria-labelledby="portal-title">
+  <video class="portal-plate" id="portal-plate" muted loop playsinline preload="metadata" aria-hidden="true">
+    <source src="/hunt-assets/portal.mp4" type="video/mp4">
+  </video>
+  <div class="portal-mark"><img src="/hunt-assets/logo.png" alt="" width="36" height="36"><span>OJASSS</span></div>
+  <div class="portal-copy">
+    <p class="eyebrow">OJASSS GAME STUDIO · COMING SOON</p>
+    <h1 id="portal-title">One Chance</h1>
+    <p>A battle royale island awaits. Step into the world of One Chance.</p>
+    <a class="button" href="#island-title">Explore the island ↓</a>
+  </div>
+  <button class="portal-control" type="button" id="portal-control">Play background</button>
+</section>
+<script src="/hunt-assets/portal.js" defer></script><section class="island-hero" aria-labelledby="island-title">
+  <div class="island-map" aria-label="Interactive island reconnaissance map">
+    <canvas id="island-map" aria-hidden="true"></canvas>
+    <button id="island-ripple" type="button">Ripple the map</button>
+  </div>
+  <div class="island-copy">
+    <p class="eyebrow orange">OJASSS GAME STUDIO · COMING SOON</p>
+    <h2 id="island-title">One Chance.<br><em>One island.</em></h2>
+    <p>Drop into an island built for a battle royale. Scout the coast, learn the terrain, and find your own way through.</p>
+    <a class="button primary" href="#experience">Explore the vision <span aria-hidden="true">↓</span></a>
+    <small>Interactive concept map · Drag the cloth</small>
+  </div>
+</section>
+<style>
+.island-hero{min-height:100svh;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:center;gap:clamp(18px,4vw,64px);padding:clamp(18px,5vw,80px);background:radial-gradient(ellipse at 32% 34%,#254c4d,#131e23 57%,#0c1117);color:#f6f5e9;isolation:isolate}
+.island-map{position:relative;min-width:0;aspect-ratio:1.07}
+.island-map canvas{width:100%;height:100%;display:block;cursor:grab;touch-action:none}
+.island-map canvas:active{cursor:grabbing}
+#island-ripple{position:absolute;bottom:0;left:50%;transform:translateX(-50%);white-space:nowrap;border:1px solid #7f9b9c;border-radius:999px;background:#132528;color:#fff;padding:9px 16px;cursor:pointer}
+.island-copy h2{font-size:clamp(3rem,7.4vw,8rem);line-height:.9;letter-spacing:-.07em;margin:.25em 0}
+.island-copy h2 em{font-style:normal;color:#ffc173}
+.island-copy>p:not(.eyebrow){max-width:38ch;color:#cfdddd;line-height:1.55;margin-bottom:1.4rem}
+.island-copy small{display:block;margin-top:1rem;color:#adc1c2}
+.island-copy{animation:island-rise .8s ease both}
+@keyframes island-rise{from{opacity:0;transform:translateY(18px)}}
+@media(max-width:760px){.island-hero{grid-template-columns:1fr;gap:1.25rem;padding-top:28px;padding-bottom:36px}.island-map{max-height:54svh;width:min(100%,58svh);margin:auto}.island-copy h2{font-size:clamp(3rem,12vw,5rem)}}
+@media(prefers-reduced-motion:reduce){.island-copy{animation:none}}
+</style>
+<script src="/hunt-assets/island-map.js" defer></script>
+
+<div class="ticker" aria-hidden="true"><div>EXPLORE THE UNKNOWN <b>✦</b> FIND YOUR FIRE <b>✦</b> WRITE YOUR STORY <b>✦</b> DAILY HUNT <b>✦</b> EXPLORE THE UNKNOWN <b>✦</b> FIND YOUR FIRE <b>✦</b> WRITE YOUR STORY <b>✦</b> DAILY HUNT <b>✦</b></div></div>
+<section id="experience" class="section wrap reveal"><div class="section-top"><div><p class="eyebrow orange">01 / THE EXPERIENCE</p><h2>A little mystery.<br><span>A lot to look forward to.</span></h2></div><p class="section-intro">The spirit of a battle arena, reimagined for our next adventure. This is the beginning of Daily Hunt. The rest of the story is still being built.</p></div><div class="feature-grid"><article class="feature"><span class="feature-number">01</span><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="10"/><path d="M16 2v8m0 12v8M2 16h8m12 0h8"/><circle cx="16" cy="16" r="3"/></svg><h3>A new arena</h3><p>A battle-inspired world with a bold OJASSS identity. A place for your next story to begin.</p><span class="feature-tag">THE VISION</span></article><article class="feature"><span class="feature-number">02</span><svg viewBox="0 0 32 32" aria-hidden="true"><path d="m18 2-12 17h9l-1 11 12-17h-9z"/></svg><h3>Find your fire</h3><p>Challenge yourself. Bring your energy. We’re shaping an experience worth waiting for.</p><span class="feature-tag">IN DEVELOPMENT</span></article><article class="feature"><span class="feature-number">03</span><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="11" cy="11" r="5"/><circle cx="24" cy="12" r="4"/><path d="M2 29v-4a9 9 0 0 1 18 0v4m1-12a7 7 0 0 1 9 7v5"/></svg><h3>Our community first</h3><p>Made for the people who make OJASSS what it is. Creators, dreamers and the curious.</p><span class="feature-tag">THE OJASSS WAY</span></article></div><p class="fineprint">Daily Hunt is an upcoming experience. Gameplay, modes and launch timing will be announced as development progresses.</p></section>
+<section id="universe" class="universe section"><div class="wrap"><div class="section-top reveal"><div><p class="eyebrow orange">02 / THE OJASSS UNIVERSE</p><h2>More than a moment.<br><span>A place to make your mark.</span></h2></div><a class="button ghost" href="https://ojasss.com/">Enter the community <span aria-hidden="true">↗</span></a></div><div class="universe-grid reveal"><article class="spotlight"><span class="mini-label">LIVE ON OJASSS</span><div class="flame-art" aria-hidden="true"><img src="/hunt-assets/logo.png" alt="" loading="lazy"></div><h3>Your voice.<br>Your fire.<br><em>Your One Chance.</em></h3><p>Create a reel. Speak your mind. Discover what moves you.</p><a class="text-link" href="https://ojasss.com/register">Find your people <span aria-hidden="true">↗</span></a></article><div class="universe-cards"><a class="universe-card" href="https://ojasss.com/"><span class="icon-tile">01</span><div><h3>Reels & real voices</h3><p>Original stories, fresh perspectives and conversations through Speak.</p></div><span aria-hidden="true">↗</span></a><a class="universe-card" href="https://ojasss.com/?category=one_chance"><span class="icon-tile violet">02</span><div><h3>One Chance</h3><p>10 Fires + 10 Shares unlock Viral. Discover the videos rising in our community.</p></div><span aria-hidden="true">↗</span></a><a class="universe-card" href="https://ojasss.com/leaderboard"><span class="icon-tile gold">03</span><div><h3>A moment in the spotlight</h3><p>Explore One Chance videos and the weekly and monthly voting leaderboards.</p></div><span aria-hidden="true">↗</span></a><a class="universe-card" href="https://ojasss.com/categories"><span class="icon-tile rose">04</span><div><h3>Something for every interest</h3><p>Entertainment, music, education, business, jobs and news. Make the feed yours.</p></div><span aria-hidden="true">↗</span></a></div></div></div></section>
+<section class="wrap download-section reveal" aria-label="Get the OJASSS Android app"><div class="download-panel"><span class="download-logo"><img src="/hunt-assets/logo.png" width="48" height="48" alt="OJASSS"></span><div><span class="mini-label">OJASSS FOR ANDROID</span><h3>Your community. In your pocket.</h3><p>The latest OJASSS app · v1.0.12</p></div><a class="button primary small" href="https://ojasss.com/downloads/OJASSS-1.0.12.apk" download="OJASSS-1.0.12.apk">Download app <span aria-hidden="true">↓</span></a></div></section>
+<section id="updates" class="section wrap reveal"><div class="launch-card"><div class="launch-glow" aria-hidden="true"></div><div class="eyebrow"><span class="live-dot"></span> THE NEXT CHAPTER IS LOADING</div><h2>Stay close.<br><em>The hunt is coming.</em></h2><p>We’ll share Daily Hunt launch news in OJASSS.<br>Join the community and be part of what comes next.</p><div class="hero-actions"><a class="button primary" href="https://ojasss.com/register">Join OJASSS <span aria-hidden="true">↗</span></a><button class="button ghost" id="share-hunt" type="button">Share the excitement <span aria-hidden="true">↗</span></button></div><p id="share-status" role="status" aria-live="polite"></p><span class="launch-note">No launch date yet. Just a vision with a lot of fire.</span></div></section>
+<details class="wrap faq"><summary>What can I do right now?</summary><p>Daily Hunt gameplay is coming soon. You can already use OJASSS to watch and upload videos, share your voice, discover categories and explore Viral videos in One Chance. Open <a href="https://ojasss.com/">ojasss.com</a> to get started.</p></details></main>
+<footer class="wrap footer"><a class="brand" href="https://ojasss.com/"><span class="logo"><img src="/hunt-assets/logo.png" width="34" height="34" alt="OJASSS"></span><span>OJASSS<small>THE INDIAN MASS POWER APP</small></span></a><p>© <span id="year">2026</span> OJASSS. Your next chapter starts here.</p><div><a href="https://ojasss.com/privacy-policy">Privacy</a><a href="https://ojasss.com/terms">Terms</a><a href="https://ojasss.com/">Open app ↗</a></div></footer></body></html>

@@ -1,0 +1,9 @@
+.gp{display:flex;flex-direction:column;gap:9px;padding:12px;border-radius:14px;border:1px solid rgba(250,204,21,.35);background:linear-gradient(135deg,rgba(250,204,21,.08),rgba(255,255,255,.02));text-align:left}
+.gp-head{display:flex;align-items:center;gap:9px}.gp-head b{display:block;font-size:14px}.gp-head small{font-size:11px;opacity:.7}
+.gp-ico{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;color:#2a1300;background:linear-gradient(135deg,#facc15,#f59e0b)}
+.gp-steps{margin:0;padding-left:18px;font-size:12px;display:flex;flex-direction:column;gap:3px;opacity:.9}
+.gp-upi{display:inline-flex;align-items:center;gap:4px;padding:1px 7px;border-radius:6px;background:rgba(255,255,255,.08);font-weight:600}
+.gp-pay{display:flex;align-items:center;justify-content:center;gap:6px;height:38px;border-radius:999px;font-weight:700;font-size:13px;color:#2a1300;background:linear-gradient(90deg,#facc15,#f59e0b)}
+.gp-form{display:flex;gap:6px}.gp-form input{flex:1;min-width:0;height:36px;padding:0 11px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(0,0,0,.25);color:inherit;font-size:13px;outline:0}
+.gp-form button{height:36px;padding:0 14px;border-radius:10px;font-weight:700;font-size:12.5px;color:#fff;background:linear-gradient(90deg,#7c3aed,#c026d3)}.gp-form button:disabled{opacity:.45}
+.gp-wait{margin:0;font-size:12.5px;color:#fde68a}.gp-err{margin:0;font-size:12px;color:#fca5a5}.gp-note{margin:0;font-size:10.5px;opacity:.55}

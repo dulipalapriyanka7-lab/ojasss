@@ -1,0 +1,25 @@
+import {afterEach,it,expect,vi} from 'vitest';
+import {render,screen,waitFor,cleanup,within} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import {QueryClient,QueryClientProvider} from '@tanstack/react-query';
+import {CategoryAdminPanel} from '@/components/admin/CategoryAdminPanel';
+import {admin} from '@/api/admin';
+const state=vi.hoisted(()=>({config:{} as Record<string,unknown>}));
+vi.mock('@/api/admin',()=>({admin:{settings:vi.fn(async()=>[{key:'categories.config',value:state.config}]),updateSetting:vi.fn(async(_key,value)=>{state.config=value;return {};})}}));
+vi.mock('@/components/ui/Toast',()=>({useToast:()=>({success:vi.fn(),error:vi.fn()})}));
+afterEach(()=>{cleanup();vi.unstubAllGlobals();vi.clearAllMocks();state.config={};});
+it('lets an administrator toggle, rename, delete and restore a category',async()=>{
+ vi.stubGlobal('matchMedia',()=>({matches:false,addEventListener:()=>{},removeEventListener:()=>{}}));
+ const qc=new QueryClient({defaultOptions:{queries:{retry:false}}});const user=userEvent.setup();
+ render(<QueryClientProvider client={qc}><CategoryAdminPanel/></QueryClientProvider>);
+ await user.click(await screen.findByRole('switch',{name:'Entertainment'}));
+ await waitFor(()=>expect(screen.getByRole('switch',{name:'Entertainment'})).toHaveAttribute('aria-checked','false'));
+ await user.click(screen.getByRole('button',{name:'Edit Entertainment'}));
+ const input=screen.getByLabelText('Category name');await user.clear(input);await user.type(input,'Stories');await user.click(screen.getByRole('button',{name:'Save changes'}));
+ await waitFor(()=>expect(screen.getByRole('switch',{name:'Stories'})).toBeVisible());
+ await user.click(screen.getByRole('button',{name:'Delete Stories'}));
+ const dialog=screen.getByRole('dialog',{name:'Delete category?'});await user.click(within(dialog).getByRole('button',{name:'Delete category'}));
+ await user.click(await screen.findByRole('button',{name:'Restore Stories'}));
+ await waitFor(()=>expect(screen.getByRole('switch',{name:'Stories'})).toHaveAttribute('aria-checked','true'));
+ expect(admin.updateSetting).toHaveBeenLastCalledWith('categories.config',{entertainment:{label:'Stories',description:'Comedy, music, dance, lifestyle',enabled:true,deleted:false}},expect.any(String),true);
+});

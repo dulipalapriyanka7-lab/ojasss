@@ -1,0 +1,6 @@
+import {useEffect,useRef} from 'react';
+import {useQuery,useQueryClient} from '@tanstack/react-query';
+import {rpc} from '@/api/client';
+type PresenceMember={id:string;display_name:string;username:string;avatar_path?:string|null};
+type Presence={online_count:number;member_count:number;members:PresenceMember[];typing:PresenceMember[]};
+export function useGroupPresence(id:string,enabled:boolean,body:string){const qc=useQueryClient(),text=useRef(body),lastEdit=useRef(0);if(text.current!==body){lastEdit.current=Date.now();text.current=body;}const q=useQuery({queryKey:['group-presence',id],queryFn:()=>rpc<Presence>('chat_presence_state',{conversation_id:id}),enabled,refetchInterval:enabled?4000:false});useEffect(()=>{if(!enabled)return;let cancelled=false;const update=()=>{void rpc<Presence>('chat_presence_update',{conversation_id:id,online:!document.hidden,typing:!document.hidden&&!!text.current.trim()&&Date.now()-lastEdit.current<3500}).then(data=>{if(!cancelled)qc.setQueryData(['group-presence',id],data);}).catch(()=>{});};update();const timer=setInterval(update,5000);document.addEventListener('visibilitychange',update);return()=>{cancelled=true;clearInterval(timer);document.removeEventListener('visibilitychange',update);void rpc('chat_presence_update',{conversation_id:id,online:false,typing:false}).catch(()=>{});};},[id,enabled,qc]);return q;}

@@ -1,0 +1,14 @@
+import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import type { PostCard } from '@/api';
+vi.mock('@/api',()=>({posts:{recordView:vi.fn().mockResolvedValue({})}}));
+vi.mock('@/lib/media',()=>({mediaUrl:(path:string|null)=>path?`/media/${path}`:null}));
+import { VideoPlayer } from '@/components/post/MediaView';
+const card={id:'video-1',media_path:'clip.mp4',thumbnail_path:null,caption:'Test reel'} as PostCard;
+beforeEach(()=>{vi.spyOn(HTMLMediaElement.prototype,'play').mockResolvedValue(undefined);vi.spyOn(HTMLMediaElement.prototype,'pause').mockImplementation(()=>{});Object.defineProperty(document,'visibilityState',{configurable:true,value:'visible'});vi.stubGlobal('matchMedia',()=>({matches:false,addEventListener:()=>{},removeEventListener:()=>{}}));});
+afterEach(()=>{cleanup();vi.restoreAllMocks();vi.unstubAllGlobals();});
+describe('video playback lifecycle',()=>{
+ it('loops normally and forwards completion only for active auto-scroll clips',()=>{const ended=vi.fn();const view=render(<VideoPlayer post={card} active muted onToggleMute={()=>{}} preload="auto" onEnded={ended}/>);expect(screen.getByLabelText('Video: Test reel')).toHaveAttribute('loop');view.rerender(<VideoPlayer post={card} active muted autoScroll onToggleMute={()=>{}} preload="auto" onEnded={ended}/>);expect(screen.getByLabelText('Video: Test reel')).not.toHaveAttribute('loop');fireEvent.ended(screen.getByLabelText('Video: Test reel'));expect(ended).toHaveBeenCalledTimes(1);view.rerender(<VideoPlayer post={card} active={false} muted autoScroll onToggleMute={()=>{}} preload="metadata" onEnded={ended}/>);fireEvent.ended(screen.getByLabelText('Video: Test reel'));expect(ended).toHaveBeenCalledTimes(1);});
+ it('pauses when the tab is hidden',()=>{render(<VideoPlayer post={card} active muted onToggleMute={()=>{}} preload="auto"/>);const before=vi.mocked(HTMLMediaElement.prototype.pause).mock.calls.length;Object.defineProperty(document,'visibilityState',{configurable:true,value:'hidden'});act(()=>document.dispatchEvent(new Event('visibilitychange')));expect(vi.mocked(HTMLMediaElement.prototype.pause).mock.calls.length).toBeGreaterThan(before);});
+ it('never restarts an inactive clip after an old autoplay rejection',async()=>{let reject!:(reason:Error)=>void;vi.mocked(HTMLMediaElement.prototype.play).mockImplementation(()=>new Promise((_,r)=>{reject=r;}));const view=render(<VideoPlayer post={card} active muted={false} onToggleMute={()=>{}} preload="auto"/>);view.rerender(<VideoPlayer post={card} active={false} muted={false} onToggleMute={()=>{}} preload="metadata"/>);await act(async()=>reject(new Error('autoplay blocked')));expect(HTMLMediaElement.prototype.play).toHaveBeenCalledTimes(1);});
+});

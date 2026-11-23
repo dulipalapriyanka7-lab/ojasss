@@ -1,0 +1,20 @@
+.status-glass-actions{position:absolute;top:64px;right:12px;z-index:6;display:flex;gap:6px}
+.status-glass-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:5px;min-height:30px;padding:0 12px;border-radius:999px;font-size:12px;font-weight:600;color:#fff;
+ background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.32);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -1px 0 rgba(0,0,0,.15),0 4px 14px rgba(0,0,0,.35);backdrop-filter:blur(12px) saturate(1.4);-webkit-backdrop-filter:blur(12px) saturate(1.4);transition:transform .15s ease,background .15s ease}
+.status-glass-btn::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:status-glass-shine 3s ease-in-out infinite;pointer-events:none}
+.status-glass-btn:active{transform:scale(.96)}
+.status-glass-btn:disabled{opacity:.6}
+.status-glass-btn.is-danger{background:linear-gradient(180deg,rgba(248,113,113,.4),rgba(220,38,38,.18));border-color:rgba(252,165,165,.45)}
+.status-glass-btn.is-primary{background:linear-gradient(180deg,rgba(236,72,153,.55),rgba(139,92,246,.35));border-color:rgba(244,186,255,.5)}
+.status-glass-edit{position:absolute;left:12px;right:12px;bottom:84px;z-index:6;display:flex;gap:6px;padding:6px;border-radius:999px;background:rgba(15,13,20,.45);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.status-glass-edit input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:#fff;font-size:14px;padding:0 10px}
+.status-glass-confirm{position:absolute;left:50%;top:50%;z-index:8;transform:translate(-50%,-50%);width:min(300px,calc(100% - 32px));padding:16px;border-radius:20px;text-align:center;color:#fff;background:rgba(20,18,26,.6);border:1px solid rgba(255,255,255,.25);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 16px 40px rgba(0,0,0,.5);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.status-glass-confirm p{font-size:14px;margin-bottom:12px}
+.status-glass-confirm div{display:flex;justify-content:center;gap:8px}
+@keyframes status-glass-shine{0%,60%{left:-70%}100%{left:130%}}
+@media (prefers-reduced-motion:reduce){.status-glass-btn::after{animation:none}}
+.status-timer-seg{position:relative;overflow:hidden;background:#ffffff40!important}
+.status-timer-seg>i{position:absolute;inset:0 auto 0 0;display:block;background:#fff;border-radius:2px}
+.status-caption-row{display:flex;align-items:center;gap:8px;pointer-events:auto!important}
+.status-caption-pencil{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:999px;color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.25),rgba(255,255,255,.07));border:1px solid rgba(255,255,255,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 3px 10px rgba(0,0,0,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}

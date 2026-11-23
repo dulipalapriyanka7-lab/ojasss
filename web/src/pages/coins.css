@@ -1,0 +1,16 @@
+.gc{max-width:560px;margin:0 auto;padding:14px 14px 90px;color:#fff}
+.gc-hero{display:flex;align-items:center;gap:12px;padding:16px;border-radius:18px;background:linear-gradient(135deg,#78350f,#b45309 55%,#f59e0b);box-shadow:0 10px 30px #f59e0b33}
+.gc-hero svg{flex:none;color:#fef3c7}.gc-hero div{display:flex;flex-direction:column}
+.gc-hero small{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fef3c7cc}
+.gc-hero b{font-size:32px;font-weight:900;line-height:1.1}.gc-hero span{font-size:12px;color:#fef3c7}
+.gc-note{margin:10px 2px;font-size:12px;line-height:1.45;color:#a99bb9}
+.gc-use{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.gc-use a{display:flex;flex-direction:column;gap:2px;padding:11px;border-radius:14px;border:1px solid #ffffff1a;background:#ffffff08}
+.gc-use svg{color:#fbbf24}.gc-use b{font-size:13px}.gc-use span{font-size:10.5px;color:#a99bb9}
+.gc-h{margin:18px 2px 8px;font-size:14px;font-weight:800}
+.gc-empty{font-size:12px;color:#a99bb9}
+.gc-list{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.gc-list li{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:#ffffff08;border:1px solid #ffffff12}
+.gc-list li div{flex:1;min-width:0;display:flex;flex-direction:column}.gc-list b{font-size:13px}
+.gc-list span{font-size:11px;color:#a99bb9;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gc-list strong{font-size:15px;font-weight:900}.gc-list .is-in{color:#4ade80}.gc-list .is-out{color:#fb7185}

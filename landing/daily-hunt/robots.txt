@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /app.html
+Sitemap: https://new.ojasss.com/sitemap.xml

@@ -1,0 +1,44 @@
+/* One measured column for every reel action, count and Viral target. */
+.engagement-rail-vertical{width:56px;gap:5px!important;align-items:center}
+.engagement-rail-vertical>*,.engagement-rail-vertical .rail-fire-stack,.engagement-rail-vertical .one-chance-vote-group{width:56px;flex-shrink:0;align-items:center}
+.engagement-rail-vertical .rail-action{width:56px;min-width:44px;min-height:58px!important;gap:3px!important;padding:0;justify-content:flex-start}
+.engagement-rail-vertical .rail-icon{width:40px!important;height:40px!important;flex:0 0 40px;border:1px solid #ffffff25;box-shadow:inset 0 1px 0 #ffffff13,0 3px 9px #00000010}
+.engagement-rail-vertical .rail-icon>svg{width:22px!important;height:22px!important;stroke-width:1.8}
+.engagement-rail-vertical .rail-value{display:flex;justify-content:center;align-items:center;min-height:14px;max-width:56px;white-space:nowrap;font-size:10px;line-height:14px;font-weight:650;padding:0 5px;background:transparent;letter-spacing:.01em}
+.engagement-rail-vertical.rail-on-dark .rail-value{color:#fff;text-shadow:0 1px 4px #0009}
+.engagement-rail-vertical .rail-fire-stack{gap:3px!important;min-height:58px}
+.engagement-rail-vertical .rail-fire-stack .rail-action{min-height:40px!important}
+.engagement-rail-vertical .rail-count-button{min-height:15px;height:15px;line-height:15px;font-size:10px}
+.engagement-rail-vertical .rail-count-button>span{background:transparent}
+.rail-viral-progress{display:grid;width:52px;gap:3px;padding:5px 5px;border:1px solid #e2bcff30;border-radius:9px;background:linear-gradient(140deg,#2e2039c9,#16121acc);box-shadow:inset 0 1px 0 #ffffff0a;backdrop-filter:blur(8px)}
+.rail-viral-progress>span{display:grid;grid-template-columns:11px minmax(0,1fr) auto;gap:2px;align-items:center;line-height:12px;font-size:9px;color:#c7bfce;font-variant-numeric:tabular-nums;white-space:nowrap}
+.rail-viral-progress svg{color:#b9a4c5}.rail-viral-progress b{text-align:right;color:#f7f1fc;font-size:10px;font-weight:650}.rail-viral-progress .is-reached svg,.rail-viral-progress .is-reached b{color:#ffcf8c}.rail-viral-progress>span>span{color:#b3a8bd}
+.engagement-rail-vertical .rail-action:has(.rail-viral-progress){gap:5px!important;min-height:0!important;padding-bottom:2px}
+.engagement-rail-vertical .one-chance-vote-group{gap:0}.engagement-rail-vertical .one-chance-vote-group>.rail-action{min-height:58px!important}.engagement-rail-vertical .one-chance-vote-group>span{justify-content:center;font-size:9px;line-height:13px}
+.one-chance-vote-group .rail-action .rail-icon {
+  border: 1px solid #d3b1ff60;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #473258, #251b34);
+  color: #f0dfff;
+}
+.one-chance-vote-group .rail-action .rail-icon svg { fill: none; }
+.rail-on-dark .one-chance-vote-group > span { color: #fff; }
+.engagement-rail-vertical .home-message-shortcut>span:last-child{font-size:10px;line-height:14px}
+@media(max-height:680px){.feed-mobile-actions .engagement-rail-vertical{gap:3px!important}.feed-mobile-actions .engagement-rail-vertical .rail-icon{width:36px!important;height:36px!important;flex-basis:36px}.feed-mobile-actions .engagement-rail-vertical .rail-action{min-height:52px!important}.feed-mobile-actions .engagement-rail-vertical .rail-fire-stack .rail-action{min-height:36px!important}.feed-mobile-actions .engagement-rail-vertical .rail-fire-stack{min-height:52px}.feed-mobile-actions .engagement-rail-vertical .one-chance-vote-group>.rail-action{min-height:52px!important}}
+:root[data-feed-footer-hidden=true]{--mobile-feed-bottom:0px!important}
+/* The mobile menu overlays the reel; only its controls move. Snap points and video size stay fixed. */
+@media(max-width:767px){
+ .premium-bottom-nav[data-feed-overlay]{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;transition:opacity 160ms ease,translate 160ms ease}
+ .premium-bottom-nav[data-feed-overlay-hidden]{visibility:hidden;opacity:0;pointer-events:none;translate:0 5px}
+ .home-reels-feed .feed-post-meta,.home-reels-feed .feed-mobile-actions,.home-reels-feed .feed-media-stage [role=slider]{translate:0 calc(-1 * var(--mobile-feed-bottom));transition:translate 160ms ease-out}
+}
+@media(prefers-reduced-motion:reduce){.premium-bottom-nav[data-feed-overlay],.home-reels-feed .feed-post-meta,.home-reels-feed .feed-mobile-actions,.home-reels-feed .feed-media-stage [role=slider]{transition:none}}
+.feed-creator-row{align-items:center;gap:8px!important}.feed-creator-row>a{min-width:0}.feed-creator-row .respect-creator-button{height:32px!important;min-height:32px!important;min-width:0!important;padding:0 9px!important;border-radius:11px!important;font-size:10px!important;font-weight:600!important;gap:4px!important;border-color:#e8d9ff30!important;background:linear-gradient(135deg,#89749f26,#ffffff0a)!important;box-shadow:inset 0 1px 0 #ffffff12!important}.feed-creator-row .respect-creator-button svg{width:12px;height:12px}.feed-creator-row>a>span>span:first-child{font-size:12px!important;line-height:16px}.feed-creator-row .reel-creator-category,.feed-creator-row .reel-creator-upload{font-size:9px!important;line-height:13px!important}.feed-post-meta .viral-window-bubble{min-height:22px;font-size:9px;padding:2px 8px;line-height:16px;margin-top:3px;max-width:100%}.feed-post-meta{padding-bottom:12px!important}.feed-media-stage [role=slider]{height:16px;bottom:0}.feed-media-stage [role=slider]>div{height:2px}.feed-media-stage [role=slider]:hover>div{height:4px}
+@media(max-width:767px){:root{--mobile-feed-bottom:calc(60px + max(8px,env(safe-area-inset-bottom)))}.premium-bottom-nav{bottom:max(8px,env(safe-area-inset-bottom))!important;left:10px!important;right:10px!important;border-radius:21px!important;padding:4px!important;background:linear-gradient(135deg,#201b29f5,#16141cf5)!important;border-color:#d5c3ef26!important;box-shadow:inset 0 1px 0 #ffffff0c,0 6px 20px #0003!important}.premium-bottom-nav>ul{height:48px!important;align-items:stretch}.premium-bottom-nav li{align-items:stretch}.premium-bottom-nav a{gap:3px!important;min-height:48px}.premium-bottom-nav a>span:first-child{height:29px!important;max-height:29px!important;width:40px!important;border-radius:11px!important}.premium-bottom-nav a[aria-label=Create]>span:first-child{height:38px!important;max-height:38px!important;width:38px!important;border-radius:14px!important}.premium-bottom-nav a svg{width:20px;height:20px}.premium-bottom-nav a[aria-label=Create] svg{width:24px;height:24px}.feed-mobile-actions{right:7px!important;bottom:12px!important}.feed-post-meta{padding-right:75px!important}}
+/* Episode strip sits inside the vertical reel: let an up/down swipe that starts on it scroll the reel. */
+.episode-carousel,.episode-carousel-head,.episode-nav,.episode-all{touch-action:pan-y}
+.episode-track{touch-action:pan-x pan-y;overflow-y:hidden;overscroll-behavior-x:contain}
+.episode-card{touch-action:pan-x pan-y}
+/* seek bar sits exactly on top of the floating footer */
+@media(max-width:767px){.home-reels-feed .feed-media-stage [role=slider]{translate:0 calc(-1 * (58px + max(8px,env(safe-area-inset-bottom)) + 1px))!important}
+:root[data-feed-footer-hidden=true] .home-reels-feed .feed-media-stage [role=slider]{translate:0 0!important}}

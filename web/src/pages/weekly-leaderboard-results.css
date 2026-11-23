@@ -1,0 +1,82 @@
+.weekly-countdown {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 7px 9px;
+  margin-bottom: 10px;
+  border: 1px solid #b16af078;
+  border-radius: 12px;
+  background: linear-gradient(105deg, #261635, #151021 52%, #301540);
+  box-shadow: inset 0 1px #f2baff20, 0 4px 16px #7815bb20;
+  color: #f9f2ff;
+}
+.weekly-countdown-icon { color: #f19af4; flex: none; }
+.weekly-countdown-heading { flex: 1; min-width: 90px; display: grid; gap: 2px; line-height: 1.15; }
+.weekly-countdown-heading strong { font-size: 12px; }
+.weekly-countdown-heading span { color: #ddc0ec; font-size: 10px; }
+.weekly-clock { display: grid; grid-template-columns: repeat(4, minmax(29px, 1fr)); gap: 4px; margin-left: auto; }
+.weekly-clock-unit {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid #cdb0ef39;
+  border-radius: 6px;
+  background: #130d1caa;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
+}
+.weekly-clock-unit b { font-size: 12px; }
+.weekly-clock-unit small { color: #e1bdf4; font-size: 9px; }
+.weekly-clock-unit[data-seconds="true"] { border-color: #ea8aff88; box-shadow: inset 0 0 8px #c543f441; color: #ffd9fc; }
+.weekly-countdown[data-ended="false"] .weekly-clock-unit[data-seconds="true"] b { animation: weekly-second .3s ease-out; }
+.weekly-countdown[data-ended="true"] .weekly-clock { opacity: .75; }
+@keyframes weekly-second { from { transform: translateY(2px); opacity: .65; } to { transform: translateY(0); opacity: 1; } }
+
+.weekly-winners {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 9px 11px;
+  margin-bottom: 10px;
+  border: 1px solid #eea9bc84;
+  border-radius: 13px;
+  background: radial-gradient(ellipse at top right, #65205b 0, transparent 65%), linear-gradient(115deg, #35203a, #171020);
+  box-shadow: inset 0 1px #ffcf9940, 0 4px 16px #701d6826;
+  color: #fff2fa;
+}
+.weekly-winners-head { display: flex; align-items: center; gap: 8px; }
+.weekly-winners-icon { display: grid; place-items: center; width: 29px; height: 29px; flex: none; border-radius: 8px; background: #ffbb4c22; color: #ffda91; }
+.weekly-winners-head h2 { margin: 0; font-size: 13px; font-weight: 750; line-height: 1.2; }
+.weekly-winners-head p { margin: 2px 0 0; font-size: 10px; color: #ead0e6; }
+.weekly-winners-head > a { display: inline-flex; align-items: center; gap: 3px; margin-left: auto; padding: 5px; color: #ffd8fa; font-size: 11px; }
+.weekly-winner-list { list-style: none; padding: 0; margin: 7px 0 0; }
+.weekly-winner-list li { border-top: 1px solid #f2bbf022; display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; align-items: center; gap: 6px; min-height: 33px; padding-block: 3px; }
+.weekly-winner-rank { font-size: 10px; color: #f7cf94; font-variant-numeric: tabular-nums; }
+.weekly-winner-list a { display: flex; align-items: center; gap: 6px; font-size: 11px; min-width: 0; }
+.weekly-winner-list a > span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.weekly-prize, .weekly-prize-pending { text-align: right; }
+.weekly-prize b { display: block; color: #ffe19b; font-size: 12px; font-variant-numeric: tabular-nums; }
+.weekly-prize small, .weekly-prize-pending, .weekly-winners-empty { color: #dfc3db; font-size: 10px; }
+.weekly-prize small { display: block; }
+.weekly-winners-empty { margin: 7px 0 0; }
+.weekly-confetti { position: absolute; inset: 0; pointer-events: none; }
+.weekly-confetti i { position: absolute; left: 54%; top: 18px; width: 5px; height: 8px; border-radius: 1px; background: #ffc56d; opacity: 0; animation: weekly-confetti 1.15s cubic-bezier(.17,.57,.44,.98) both; }
+.weekly-confetti i:nth-child(4n + 1) { --flight: -28vw; background: #ff70bd; }
+.weekly-confetti i:nth-child(4n + 2) { --flight: -15vw; background: #dfadff; }
+.weekly-confetti i:nth-child(4n + 3) { --flight: 15vw; }
+.weekly-confetti i:nth-child(4n) { --flight: 27vw; background: #9cebe9; }
+.weekly-confetti i:nth-child(n + 5) { animation-delay: .1s; --drop: 70px; }
+.weekly-confetti i:nth-child(n + 9) { animation-delay: .17s; --drop: 108px; }
+@keyframes weekly-confetti {
+  0% { opacity: 0; transform: translate(0, 4px) rotate(0) scale(.6); }
+  18% { opacity: 1; }
+  42% { transform: translate(calc(var(--flight) * .6), -15px) rotate(80deg); }
+  100% { opacity: 0; transform: translate(var(--flight), var(--drop, 44px)) rotate(290deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .weekly-countdown[data-ended="false"] .weekly-clock-unit[data-seconds="true"] b { animation: none; }
+  .weekly-confetti { display: none; }
+}

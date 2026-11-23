@@ -1,0 +1,25 @@
+/* Viral Challenges admin: slim layout */
+.vc-slim{padding-top:12px!important}
+.vc-slim>*+*{margin-top:10px!important}
+.vc-slim h1.text-xl{font-size:16px;line-height:1.25}
+.vc-slim h1+p,.vc-slim .text-sm.text-fg-2{font-size:11.5px}
+.vc-slim .rounded-xl.bg-fuchsia-700\/20{padding:6px;border-radius:9px}
+.vc-slim .rounded-xl.bg-fuchsia-700\/20 svg{width:16px;height:16px}
+.vc-slim .grid.grid-cols-2{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+@media (min-width:1024px){.vc-slim .grid.grid-cols-2{grid-template-columns:repeat(7,minmax(0,1fr))}}
+.vc-slim .grid.grid-cols-2>*{padding:7px 9px!important;border-radius:10px!important;min-height:0}
+.vc-slim .grid.grid-cols-2 .text-xs{font-size:10px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.vc-slim .grid.grid-cols-2 .text-xl{font-size:15px;line-height:1.3}
+.vc-slim section,.vc-slim form{padding:10px 12px!important;border-radius:12px!important}
+.vc-slim input:not([type=checkbox]):not([type=file]),.vc-slim select{height:32px!important;min-height:0!important;padding:0 10px!important;font-size:12.5px!important;border-radius:8px!important}
+.vc-slim textarea{padding:7px 10px!important;font-size:12.5px!important;border-radius:8px!important}
+.vc-slim button,.vc-slim .btn,.vc-slim a.btn{min-height:30px;height:30px;padding:0 12px;font-size:12px;border-radius:999px}
+.vc-slim table{font-size:12px}
+.vc-slim td,.vc-slim th{padding:6px 8px!important}
+/* v2: readable stat tiles */
+.vc-slim .grid.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;width:100%;margin-left:0;margin-right:0}
+@media (min-width:640px){.vc-slim .grid.grid-cols-2{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:1024px){.vc-slim .grid.grid-cols-2{grid-template-columns:repeat(7,minmax(0,1fr))}}
+.vc-slim .grid.grid-cols-2>*{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 11px!important}
+.vc-slim .grid.grid-cols-2 .text-xs{font-size:11.5px;white-space:normal;overflow:visible;line-height:1.25;opacity:.8}
+.vc-slim .grid.grid-cols-2 .text-xl{font-size:16px;font-weight:800}

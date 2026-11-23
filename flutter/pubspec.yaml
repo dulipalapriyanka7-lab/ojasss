@@ -1,0 +1,27 @@
+name: ojasss
+description: OJASSS native Flutter Android app
+publish_to: none
+version: 1.0.34+101
+environment:
+  sdk: ^3.12.2
+dependencies:
+  flutter:
+    sdk: flutter
+  app_links: ^7.2.1
+  crypto: ^3.0.7
+  flutter_secure_storage: ^10.3.4
+  google_sign_in: ^7.2.0
+  image_picker: ^1.2.3
+  mime: ^2.0.0
+  share_plus: ^13.3.0
+  url_launcher: ^6.3.2
+  video_player: ^2.14.0
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/home-flame.png
+    - assets/google-g.png

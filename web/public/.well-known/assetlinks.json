@@ -1,0 +1,22 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.ojasss.app",
+      "sha256_cert_fingerprints": [
+        "84:80:14:EF:66:AE:2F:1C:77:20:47:DA:A5:6B:77:46:A3:0B:16:72:C0:63:D1:23:57:94:D8:A9:29:FD:AB:41"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.ojasss.app.flutter",
+      "sha256_cert_fingerprints": [
+        "84:80:14:EF:66:AE:2F:1C:77:20:47:DA:A5:6B:77:46:A3:0B:16:72:C0:63:D1:23:57:94:D8:A9:29:FD:AB:41"
+      ]
+    }
+  }
+]

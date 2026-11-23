@@ -1,0 +1,39 @@
+/* Game room overlay: tiny, translucent, top-left, never covers the crosshair or controls */
+.grc{position:absolute;top:calc(env(safe-area-inset-top,0px) + 124px);left:8px;z-index:20;display:flex;flex-direction:column;align-items:flex-start;gap:6px;pointer-events:none;font-size:12px;color:#fff}
+.grc>*{pointer-events:auto}
+.grc-chip{position:relative;display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 9px;border-radius:999px;font-weight:700;font-size:11px;background:rgba(10,8,18,.55);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.14)}
+.grc-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;animation:grc-pulse 1.6s infinite}
+@keyframes grc-pulse{50%{opacity:.4}}
+.grc-badge{position:absolute;top:-5px;right:-5px;min-width:15px;height:15px;padding:0 4px;border-radius:999px;font-size:9px;line-height:15px;text-align:center;background:#ef4444}
+.grc-panel{width:min(250px,62vw);display:flex;flex-direction:column;border-radius:12px;overflow:hidden;background:rgba(10,8,18,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12)}
+.grc-top{display:flex;align-items:center;gap:6px;padding:5px 7px;border-bottom:1px solid rgba(255,255,255,.08);font-size:10.5px;opacity:.9}
+.grc-top span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.grc-list{max-height:120px;overflow-y:auto;padding:5px 8px;display:flex;flex-direction:column;gap:3px}
+.grc-list p{margin:0;font-size:11.5px;line-height:1.3;word-break:break-word}.grc-list b{color:#f0abfc;font-weight:600}
+.grc-empty{opacity:.55}
+.grc-form{display:flex;gap:4px;padding:5px;border-top:1px solid rgba(255,255,255,.08)}
+.grc-form input{flex:1;min-width:0;height:28px;padding:0 9px;border-radius:8px;border:0;background:rgba(255,255,255,.1);color:#fff;font-size:12px;outline:0}
+.grc-form button{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#7c3aed,#c026d3)}.grc-form button:disabled{opacity:.4}
+.grc-bar{display:flex;gap:5px}
+.grc-mic{color:#d4d4d8}.grc-mic.is-on{color:#fff;border-color:rgba(34,197,94,.55);background:rgba(22,101,52,.55)}
+.grc-ask{width:min(250px,64vw);display:flex;flex-direction:column;gap:6px;padding:8px 9px;border-radius:12px;font-size:11.5px;line-height:1.35;background:rgba(10,8,18,.72);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14)}
+.grc-ask>svg{color:#86efac}
+.grc-ask div{display:flex;gap:5px}.grc-ask button{height:26px;padding:0 11px;border-radius:999px;font-size:11px;font-weight:700;background:rgba(255,255,255,.1)}
+.grc-ask button.ok{background:linear-gradient(90deg,#16a34a,#22c55e)}
+.grc-err{border-color:rgba(239,68,68,.4)}
+.grc-off{height:20px;padding:0 7px;border-radius:999px;font-size:10px;background:rgba(239,68,68,.25)}
+.grc-faces{display:inline-flex}.grc-faces>*{border:1.5px solid rgba(10,8,18,.9);border-radius:50%}.grc-faces>*+*{margin-left:-6px}
+.grc-faces:empty{display:none}
+.grc-online{display:flex;gap:8px;overflow-x:auto;padding:6px 8px 4px;border-bottom:1px solid rgba(255,255,255,.08);scrollbar-width:none}
+.grc-online span{position:relative;flex:none;display:flex;flex-direction:column;align-items:center;gap:2px;width:40px}
+.grc-online i{position:absolute;top:15px;right:7px;width:8px;height:8px;border-radius:50%;background:#22c55e;border:1.5px solid #0a0812}
+.grc-online i.v{background:#38bdf8}
+.grc-online small{max-width:40px;font-size:9px;opacity:.75;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* Landscape: sit in the free footer space between the joystick and the weapon cards */
+@media (orientation:landscape){
+ .grc{top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 8px);left:max(14px,env(safe-area-inset-left,0px));flex-direction:column-reverse;align-items:flex-start}
+ .grc-bar{flex-direction:row}
+ .grc-panel{width:min(270px,30vw)}
+ .grc-list{max-height:90px}
+}

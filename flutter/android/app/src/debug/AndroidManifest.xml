@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- Required by the Flutter tool (hot reload, breakpoints). -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Debug only: allow a local QA server (localhost via adb reverse, or 10.0.2.2). -->
+    <application
+        android:networkSecurityConfig="@xml/network_security_config"
+        tools:replace="android:usesCleartextTraffic"
+        android:usesCleartextTraffic="true" />
+</manifest>

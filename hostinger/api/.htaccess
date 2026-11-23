@@ -1,0 +1,9 @@
+Options -Indexes
+DirectoryIndex index.php
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L,QSA]
+<FilesMatch "^(config|schema|.*\.sql)">
+  Require all denied
+</FilesMatch>

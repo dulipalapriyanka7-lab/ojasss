@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noUncheckedIndexedAccess": false,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "skipLibCheck": true,
+    "lib": ["ES2022", "DOM"],
+    "types": ["node"]
+  },
+  "include": ["tests/**/*.ts", "functions/_shared/**/*.ts", "vitest.config.ts"],
+  "exclude": ["functions/_shared/clients.ts"]
+}

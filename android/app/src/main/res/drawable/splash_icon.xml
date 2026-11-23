@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 240dp is the size required by the SplashScreen API. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="VectorRaster"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="240dp" android:height="240dp" android:viewportWidth="108" android:viewportHeight="108">
+    <path android:pathData="M54,18 a36,36 0 1,0 0.01,0 z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:startX="18" android:startY="18" android:endX="90" android:endY="90">
+                <item android:offset="0" android:color="#FFFF7A1A" />
+                <item android:offset="0.55" android:color="#FFF04D4D" />
+                <item android:offset="1" android:color="#FFE0337A" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <group android:scaleX="0.9" android:scaleY="0.9" android:translateX="25.2" android:translateY="25.2">
+        <path android:pathData="M47.757,29.222 A16,16 0 1,1 33.811,16.102" android:strokeColor="#FFFFFFFF" android:strokeWidth="6" android:strokeLineCap="round" android:fillColor="#00000000" />
+        <path android:pathData="M28.5,25.5 L39,32 L28.5,38.5 Z" android:fillColor="#FFFFFFFF" android:strokeColor="#FFFFFFFF" android:strokeWidth="3" android:strokeLineJoin="round" />
+        <path android:pathData="M40.7,19.7 a3.6,3.6 0 1,0 7.2,0 a3.6,3.6 0 1,0 -7.2,0" android:fillColor="#FFFFFFFF" />
+    </group>
+</vector>

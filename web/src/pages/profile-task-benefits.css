@@ -1,0 +1,5 @@
+.profile-task-benefits { padding: 8px 12px 2px; border: 1px solid var(--color-line); border-radius: 12px; background: linear-gradient(110deg,#a855f708,transparent 65%),var(--color-surface); }
+.profile-task-emblem { background: linear-gradient(130deg,#a855f724,#ec489916); border: 1px solid #c084fc26; }
+.profile-task-list { padding-top: 2px; }
+.profile-task-row { padding: 10px 0; border-top: 1px solid var(--color-line); }
+.profile-task-benefits a:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 2px; }

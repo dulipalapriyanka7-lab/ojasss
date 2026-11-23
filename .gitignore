@@ -1,0 +1,26 @@
+# deps / builds
+node_modules/
+dist/
+build/
+.dart_tool/
+.gradle/
+*.aab
+*.apk
+# secrets — never commit
+*.jks
+*.keystore
+keystore.properties
+local.properties
+config.php
+ojasss-private/
+*service-account*.json
+fcm-token.json
+google-services.json
+*.pem
+*ed25519*
+.env
+.env.*
+# local data
+work/
+tools/local-api/.data/
+uploads/

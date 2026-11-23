@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shown by Android until Flutter draws its first frame; the Flutter splash then takes over. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/ink" />
+    <item android:drawable="@drawable/splash_icon" android:gravity="center" android:width="160dp" android:height="160dp" />
+</layer-list>

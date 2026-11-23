@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <WebView
+        android:id="@+id/web"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/ink"
+        android:overScrollMode="never" />
+
+    <LinearLayout
+        android:id="@+id/startupView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/ink"
+        android:clickable="true"
+        android:focusable="true"
+        android:importantForAccessibility="yes">
+        <com.ojasss.app.StartupBrandView
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:contentDescription="@string/loading_app" />
+        <ProgressBar
+            android:id="@+id/startupProgress"
+            style="@android:style/Widget.Material.ProgressBar.Horizontal"
+            android:layout_width="160dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="4dp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/brand"
+            android:progressBackgroundTint="#22FFFFFF" />
+        <TextView
+            android:id="@+id/startupStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="Loading videos…"
+            android:letterSpacing="0.04"
+            android:textColor="@color/text_muted"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/errorView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/ink"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/errorIcon"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:contentDescription="@null"
+            android:importantForAccessibility="no"
+            android:src="@drawable/brand_logo_full" />
+
+        <TextView
+            android:id="@+id/errorTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:accessibilityHeading="true"
+            android:gravity="center"
+            android:text="@string/offline_title"
+            android:textColor="@color/text"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/errorBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:maxWidth="320dp"
+            android:text="@string/offline_body"
+            android:textColor="@color/text_muted"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/retry"
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/btn_brand"
+            android:minWidth="160dp"
+            android:paddingHorizontal="28dp"
+            android:stateListAnimator="@null"
+            android:text="@string/retry"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</FrameLayout>
