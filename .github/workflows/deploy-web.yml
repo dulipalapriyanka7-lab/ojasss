@@ -1,0 +1,50 @@
+name: Deploy web to Hostinger
+
+on:
+  push:
+    branches: [main]
+    paths: ['web/**']
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-web
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      SSH_HOST: 187.124.202.202
+      SSH_PORT: '65002'
+      SSH_USER: u679148089
+      REMOTE_DIR: domains/ojasss.com/public_html/
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+        working-directory: web
+      - run: npm run build
+        working-directory: web
+      - name: Trust Hostinger host key (pinned fingerprint)
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p "$SSH_PORT" -t ed25519 "$SSH_HOST" > /tmp/hk 2>/dev/null
+          fp=$(ssh-keygen -lf /tmp/hk | awk '{print $2}')
+          test "$fp" = "SHA256:Mc+Y2Z4AFFTa5pToM1U8xa9ILSndQH2dvxLtlu/vBd8" || { echo "Host key mismatch: $fp"; exit 1; }
+          cat /tmp/hk >> ~/.ssh/known_hosts
+      - name: Upload with rsync
+        env:
+          SSHPASS: ${{ secrets.SSH_PASSWORD }}
+        run: |
+          sudo apt-get install -y -qq sshpass rsync
+          # Never touch server-only files: PHP API, runtime config edited on
+          # the server, Apache rules and Android app links. No --delete.
+          rsync -rltvz \
+            --exclude '*.map' --exclude 'api/' --exclude 'config.js' \
+            --exclude '.htaccess' --exclude '.well-known/' \
+            -e "sshpass -e ssh -p $SSH_PORT" \
+            web/dist/ "$SSH_USER@$SSH_HOST:$REMOTE_DIR"
