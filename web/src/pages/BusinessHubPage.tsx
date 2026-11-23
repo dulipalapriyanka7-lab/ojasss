@@ -1,6 +1,6 @@
 import {useQuery} from '@tanstack/react-query';
 import './my-city.css';
-import {BadgeCheck, Briefcase, ChevronRight, Clock3, Cpu, Gem, GraduationCap, Home, LayoutGrid, Link2, MapPin, Play, Recycle, Search, Shirt, ShoppingBasket, ShoppingCart, Sparkles, Store, Target, Gift, Users, UtensilsCrossed, Flame, Star, type LucideIcon} from 'lucide-react';
+import {BadgeCheck, Briefcase, ChevronRight, Clock3, Link2, MapPin, Play, Search, ShoppingBasket, ShoppingCart, Sparkles, Store, Target, Gift, Users, Flame, Star, type LucideIcon} from 'lucide-react';
 import {Fragment, useEffect, useMemo, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {posts} from '@/api';
