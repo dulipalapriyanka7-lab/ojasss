@@ -598,3 +598,12 @@
 .app-new-tag::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-20deg);animation:app-new-shine 2.4s ease-in-out infinite}
 @keyframes app-new-shine{0%,55%{left:-60%}100%{left:130%}}
 @media (prefers-reduced-motion:reduce){.app-new-tag::after{animation:none}}
+
+.trust-menu-row { cursor:default; background:linear-gradient(110deg,rgba(186,70,237,.12),rgba(237,56,136,.12)); box-shadow:inset 0 0 0 1px rgba(237,56,136,.25); }
+.trust-menu-row:hover { background:linear-gradient(110deg,rgba(186,70,237,.16),rgba(237,56,136,.16)); }
+.trust-menu-row:active { transform:none; }
+.trust-icon { position:relative; display:flex; color:#ed3888; animation:trust-pulse 1.8s ease-in-out infinite; }
+.trust-soon { padding:3px 8px; border-radius:999px; background:linear-gradient(110deg,#ba46ed,#ed3888); background-size:200% 100%; color:white; font-size:10px; font-weight:700; animation:trust-shine 2.4s linear infinite; }
+@keyframes trust-pulse { 0%,100%{transform:scale(1);filter:drop-shadow(0 0 0 rgba(237,56,136,0))} 50%{transform:scale(1.15);filter:drop-shadow(0 0 6px rgba(237,56,136,.7))} }
+@keyframes trust-shine { 0%{background-position:0% 0} 100%{background-position:200% 0} }
+@media(prefers-reduced-motion:reduce){.trust-icon,.trust-soon{animation:none}}

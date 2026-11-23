@@ -2,7 +2,7 @@ import {useCategoryLabel} from '@/hooks/useCategories';
 import {DownloadVideoAction} from './DownloadVideoAction';
 import {useQueryClient} from '@tanstack/react-query';
 import {useAutoScroll,saveAutoScroll} from '@/lib/feedPreferences';
-import { ChevronsDown, Trophy, Crown, ExternalLink, Flag, Link2, MapPin, Megaphone, Scale, Trash2, HandHeart, BadgeCheck, Info, ChevronRight, Send, Bookmark, Clapperboard } from 'lucide-react';
+import { ChevronsDown, Trophy, Crown, ExternalLink, Flag, Link2, MapPin, Megaphone, Scale, Trash2, HandHeart, BadgeCheck, Info, ChevronRight, Send, Bookmark, Clapperboard, ShieldCheck } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { posts, type PostCard } from '@/api';
@@ -193,6 +193,7 @@ export function PostOptions({ post, open, onClose }: { post: PostCard; open: boo
         <div className="space-y-0.5"><button type="button" role="switch" aria-label="Auto-scroll" aria-checked={autoScroll} onClick={()=>saveAutoScroll(!autoScroll)} className="post-option-row auto-scroll-menu-row"><ChevronsDown size={19}/><span className="flex flex-1 items-center gap-2">Auto-scroll<span className="auto-scroll-new">NEW</span></span><span aria-hidden className="text-[11px] font-medium text-fg-3">{autoScroll?'On':'Off'}</span><span aria-hidden className={cn('auto-scroll-switch',autoScroll&&'is-on')}><span/></span></button><button type="button" className={item} onClick={()=>{onClose();setDetailsOpen(true);}}><Info size={19}/><span className="flex-1">Post details</span><ChevronRight size={15} className="text-fg-3"/></button>
           <Link to="/challenges" onClick={onClose} className={item}><Trophy size={19} className="text-purple-300"/><span className="flex flex-1 items-center gap-2">Daily & more challenges<span className="auto-scroll-new">NEW</span></span><ChevronRight size={15} className="text-fg-3"/></Link>
           <Link to="/my-tasks" onClick={onClose} className={cn(item,'my-tasks-menu-link')}><Trophy size={19}/><span className="flex-1">My Tasks</span><span className="auto-scroll-new">NEW</span><ChevronRight size={15}/></Link>
+          <div role="note" aria-label="OJASSS Trust, coming soon" className={cn(item,'trust-menu-row')}><span aria-hidden className="trust-icon"><ShieldCheck size={19}/></span><span className="flex flex-1 items-center gap-2">OJASSS Trust<span className="auto-scroll-new">NEW</span></span><span className="trust-soon">Coming soon</span></div>
           <button type="button" className={item} onClick={async()=>{try{await navigator.clipboard.writeText(`${env.siteUrl}/post/${post.id}`);toast.success('Link copied');onClose();}catch(e){toast.error(e);}}}><Link2 size={19}/>Copy link</button>
           {isMine&&post.series_id&&<Link to={`/upload?episode=1&series=${encodeURIComponent(post.series_title??'')}&genre=${encodeURIComponent(post.series_genre??'Horror')}&next=${(post.episode_number??0)+1}`} onClick={onClose} className={item}><Clapperboard size={19} className="text-fuchsia-400"/><span className="flex-1">Upload next episode</span><ChevronRight size={15} className="text-fg-3"/></Link>}
           {post.kind==='video'&&<DownloadVideoAction post={post}/>}
